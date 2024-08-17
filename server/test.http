@@ -1,0 +1,73 @@
+### CREATE
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+    "username": "abc",
+    "name": "abc"
+}
+
+### GET ALL
+GET http://localhost:3000/users
+
+### FIND ONE
+GET http://localhost:3000/user/1
+
+### GET USER ACTIVITY
+GET http://localhost:3000/getuser/activity
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "date": "2024-08-17"
+}
+
+### CREATE BP
+POST http://localhost:3000/bloodpressure/create
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "blood_pressure": 100
+}
+
+### GET BP
+GET http://localhost:3000/bloodpressure/1
+
+### CREATE FOOD
+POST http://localhost:3000/food/create
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "consummed_callory": 2000
+}
+
+### GET FOOD
+GET http://localhost:3000/food/1
+
+### CREATE SLEEP
+POST http://localhost:3000/sleep/create
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "start_time": "2024-08-17 00:00:00",
+    "end_time": "2024-08-17 08:00:00"
+}
+
+### GET SLEEP BY USER ID
+GET http://localhost:3000/sleep/1
+
+### CREATE SUPPLEMENT
+POST http://localhost:3000/supplement/create
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "supplement_type": "obat",
+    "is_taken": true
+}
+
+### GET SUPPLEMENT
+GET http://localhost:3000/supplement/1

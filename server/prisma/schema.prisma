@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model blood_pressure_check {
+    id Int @id @default(autoincrement())
+    user User @relation(fields: [userId], references: [id])
+    userId Int
+    blood_pressure Int
+    created_at DateTime @default(now())
+}
+
+model food {
+    id Int @id @default(autoincrement())
+    user User @relation(fields: [userId], references: [id])
+    userId Int
+    consummed_callory Int
+    created_at DateTime @default(now())
+}
+
+model supplement_intake {
+    id Int @id @default(autoincrement())
+    user User @relation(fields: [userId], references: [id])
+    userId Int
+    supplement_type String
+    is_taken Boolean
+    created_at DateTime @default(now())
+}
+
+model exercise {
+    id Int @id @default(autoincrement())
+    user User @relation(fields: [userId], references: [id])
+    userId Int
+    start_time DateTime
+    end_time DateTime
+    created_at DateTime @default(now())
+}
+
+model sleep {
+    id Int @id @default(autoincrement())
+    user User @relation(fields: [userId], references: [id])
+    userId Int
+    start_time DateTime
+    end_time DateTime
+    created_at DateTime @default(now())
+}
+
+model User {
+    id Int @id @default(autoincrement())
+    username String
+    name String
+    blood_pressure_checks blood_pressure_check[] 
+    foods food[]
+    supplement_intakes supplement_intake[]
+    exercises exercise[]
+    sleeps sleep[]
+    created_at DateTime @default(now())
+}
